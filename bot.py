@@ -97,6 +97,14 @@ async def csvstats(interaction: discord.Interaction):
 @bot.event
 async def on_ready():
     print(f"✅ Bot connecté en tant que {bot.user.name}")
+    
+    # 📡 SCRIPT TEMPORAIRE POUR RÉCUPÉRER L'IP DE RENDER
+    try:
+        ip_detectee = requests.get('https://api.ipify.org', timeout=5).text
+        print(f"📡 📡 📡 MON IP RENDER EST : {ip_detectee} 📡 📡 📡")
+    except Exception as e:
+        print(f"Impossible de récupérer l'IP automatiquement : {e}")
+
     try:
         synced = await bot.tree.sync()
         print(f"🔗 {len(synced)} commande(s) slash synchronisée(s).")
